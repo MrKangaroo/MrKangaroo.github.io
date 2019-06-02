@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="MrKangaroo&#39;s">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Netty Netty 是一款提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。  选型 使用简单：API 使用简单，开发门槛低。 功能强大：预置了多种编解码功能，支持多种主流协议。 定制能力强：可以通过 ChannelHandler 对通信框架进行灵活的扩展。 性能高：通过与其它业界主流的 NIO 框架对比，Netty 的综合性能最优。 成熟稳定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty线程模型">
+<meta property="og:url" content="http://yoursite.com/2019/06/02/Netty线程模型/index.html">
 <meta property="og:site_name" content="MrKangaroo&#39;s">
+<meta property="og:description" content="Netty Netty 是一款提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。  选型 使用简单：API 使用简单，开发门槛低。 功能强大：预置了多种编解码功能，支持多种主流协议。 定制能力强：可以通过 ChannelHandler 对通信框架进行灵活的扩展。 性能高：通过与其它业界主流的 NIO 框架对比，Netty 的综合性能最优。 成熟稳定">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-02T02:46:48.140Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MrKangaroo&#39;s">
+<meta name="twitter:title" content="Netty线程模型">
+<meta name="twitter:description" content="Netty Netty 是一款提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。  选型 使用简单：API 使用简单，开发门槛低。 功能强大：预置了多种编解码功能，支持多种主流协议。 定制能力强：可以通过 ChannelHandler 对通信框架进行灵活的扩展。 性能高：通过与其它业界主流的 NIO 框架对比，Netty 的综合性能最优。 成熟稳定">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/02/Netty线程模型/">
 
 
 
 
 
-  <title>MrKangaroo's</title>
+  <title>Netty线程模型 | MrKangaroo's</title>
   
 
 
@@ -140,8 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -264,9 +267,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -296,9 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/02/Netty线程模型/" itemprop="url">Netty线程模型</a></h1>
+          <h1 class="post-title" itemprop="name headline">Netty线程模型</h1>
         
 
         <div class="post-meta">
@@ -348,9 +349,7 @@
       
 
       
-        
-          
-            <h4 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h4><blockquote>
+        <h4 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h4><blockquote>
 <p>Netty 是一款提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。</p>
 </blockquote>
 <h5 id="选型"><a href="#选型" class="headerlink" title="选型"></a>选型</h5><ul>
@@ -473,8 +472,6 @@ void process(){
 <p>采用异步非阻塞的 I/O 类库，基于 Reactor 模式实现，解决了传统同步阻塞 I/O 模式下服务端无法平滑处理客户端线性增长的问题。</p>
 </blockquote>
 <h5 id="2-内存池"><a href="#2-内存池" class="headerlink" title="2. 内存池"></a>2. 内存池</h5><h5 id="3-零拷贝"><a href="#3-零拷贝" class="headerlink" title="3. 零拷贝"></a>3. 零拷贝</h5><h5 id="4-协议支持"><a href="#4-协议支持" class="headerlink" title="4. 协议支持"></a>4. 协议支持</h5><h5 id="5-JNI"><a href="#5-JNI" class="headerlink" title="5. JNI"></a>5. JNI</h5>
-          
-        
       
     </div>
     
@@ -491,131 +488,28 @@ void process(){
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/移动客户端接入互联网/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mrkangaroo">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MrKangaroo's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/01/移动客户端接入互联网/" itemprop="url">移动客户端接入互联网</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-01T12:29:44+08:00">
-                2019-06-01
-              </time>
+              <a href="/2019/06/01/移动客户端接入互联网/" rel="next" title="移动客户端接入互联网">
+                <i class="fa fa-chevron-left"></i> 移动客户端接入互联网
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -625,142 +519,11 @@ void process(){
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/31/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="mrkangaroo">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MrKangaroo's">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/31/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-31T10:15:58+08:00">
-                2019-05-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -768,6 +531,10 @@ void process(){
 
 
           
+
+  
+
+
 
         </div>
         
@@ -788,8 +555,17 @@ void process(){
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -831,6 +607,22 @@ void process(){
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Netty"><span class="nav-number">1.</span> <span class="nav-text">Netty</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#选型"><span class="nav-number">1.1.</span> <span class="nav-text">选型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络服务"><span class="nav-number">2.</span> <span class="nav-text">网络服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIO-NIO"><span class="nav-number">3.</span> <span class="nav-text">BIO / NIO</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#BIO"><span class="nav-number">3.1.</span> <span class="nav-text">BIO</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传统的网络服务设计"><span class="nav-number">3.2.</span> <span class="nav-text">传统的网络服务设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#NIO"><span class="nav-number">3.3.</span> <span class="nav-text">NIO</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可扩展IO的实现方式"><span class="nav-number">4.</span> <span class="nav-text">可扩展IO的实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reactor模式"><span class="nav-number">5.</span> <span class="nav-text">Reactor模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单Reactor单线程模型"><span class="nav-number">5.1.</span> <span class="nav-text">单Reactor单线程模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多工作线程模型"><span class="nav-number">5.2.</span> <span class="nav-text">多工作线程模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Netty是怎样实现高性能的？"><span class="nav-number">6.</span> <span class="nav-text">Netty是怎样实现高性能的？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-线程模型"><span class="nav-number">6.1.</span> <span class="nav-text">1. 线程模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-内存池"><span class="nav-number">6.2.</span> <span class="nav-text">2. 内存池</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-零拷贝"><span class="nav-number">6.3.</span> <span class="nav-text">3. 零拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-协议支持"><span class="nav-number">6.4.</span> <span class="nav-text">4. 协议支持</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-JNI"><span class="nav-number">6.5.</span> <span class="nav-text">5. JNI</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -964,6 +756,10 @@ void process(){
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
