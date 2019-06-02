@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/06/02/Netty线程模型/reactor-single.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/06/02/Netty线程模型/reactor-workers.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/06/02/Netty线程模型/reactor-multi.jpg">
-<meta property="og:updated_time" content="2019-06-02T02:58:25.105Z">
+<meta property="og:updated_time" content="2019-06-02T03:28:04.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Netty线程模型">
 <meta name="twitter:description" content="Netty Netty 是一款提供异步的、事件驱动的网络应用程序框架和工具，用以快速开发高性能、高可靠性的网络服务器和客户端程序。  选型 使用简单：API 使用简单，开发门槛低。 功能强大：预置了多种编解码功能，支持多种主流协议。 定制能力强：可以通过 ChannelHandler 对通信框架进行灵活的扩展。 性能高：通过与其它业界主流的 NIO 框架对比，Netty 的综合性能最优。 成熟稳定">
@@ -420,47 +420,8 @@
 <li>使用线程池可以调优和控制，通常需要比客户机少得多的线程</li>
 </ul>
 <p><img src="/2019/06/02/Netty线程模型/reactor-workers.jpg" alt="多工作线程模型"></p>
-<p>public class WorkerThreadsHandler implements Runnable {</p>
-<pre><code>public static final int READING = 0, WRITING = 1;
-int state;
-final SocketChannel socketChannel;
-final SelectionKey selectionKey;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public class WorkerThreadsHandler implements Runnable &#123;</span><br><span class="line"></span><br><span class="line">    public static final int READING = 0, WRITING = 1;</span><br><span class="line">    int state;</span><br><span class="line">    final SocketChannel socketChannel;</span><br><span class="line">    final SelectionKey selectionKey;</span><br><span class="line"></span><br><span class="line">    //多线程处理业务逻辑</span><br><span class="line">    ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());</span><br><span class="line"></span><br><span class="line">    public WorkerThreadsHandler(SocketChannel socketChannel, Selector selector) throws IOException &#123;</span><br><span class="line">        this.socketChannel = socketChannel;</span><br><span class="line">        socketChannel.configureBlocking(false);</span><br><span class="line">        this.selectionKey = socketChannel.register(selector, SelectionKey.OP_READ);</span><br><span class="line">        selectionKey.attach(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        if (state == READING) &#123;</span><br><span class="line">            read();</span><br><span class="line">        &#125; else if (state == WRITING) &#123;</span><br><span class="line">            write();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private void read()&#123;</span><br><span class="line">        executorService.submit(() -&gt; process());</span><br><span class="line">        selectionKey.interestOps(SelectionKey.OP_WRITE);</span><br><span class="line">        this.state = WRITING;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void write()&#123;</span><br><span class="line">        executorService.submit(() -&gt; process());</span><br><span class="line">        selectionKey.interestOps(SelectionKey.OP_READ);</span><br><span class="line">        this.state = READING;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void process()&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-//多线程处理业务逻辑
-ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-
-public WorkerThreadsHandler(SocketChannel socketChannel, Selector selector) throws IOException {
-    this.socketChannel = socketChannel;
-    socketChannel.configureBlocking(false);
-    this.selectionKey = socketChannel.register(selector, SelectionKey.OP_READ);
-    selectionKey.attach(this);
-}
-
-
-@Override
-public void run() {
-    if (state == READING) {
-        read();
-    } else if (state == WRITING) {
-        write();
-    }
-}
-
-
-private void read(){
-    executorService.submit(() -&gt; process());
-    selectionKey.interestOps(SelectionKey.OP_WRITE);
-    this.state = WRITING;
-}
-
-private void write(){
-    executorService.submit(() -&gt; process());
-    selectionKey.interestOps(SelectionKey.OP_READ);
-    this.state = READING;
-}
-
-void process(){
-}</code></pre><p>}</p>
 <ol start="3">
 <li>多Reactor多线程模型<br>(1)反应堆线程可以饱和做IO<br>(2)将负荷分配给其他反应堆<br> 负载平衡以匹配CPU和IO速率</li>
 </ol>
